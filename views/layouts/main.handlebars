@@ -34,23 +34,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            {{#unless loggedIn}}
-              <li class="nav-item">
-                <a class="nav-link" href="/register">Signup</a>
-              </li>
-            {{/unless}}
-            {{#unless loggedIn}}
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-            {{/unless}}
-            {{#if loggedIn}}
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-              </li>
-            {{/if}}
-          </ul>
         </div>
       </div>
     </nav>
