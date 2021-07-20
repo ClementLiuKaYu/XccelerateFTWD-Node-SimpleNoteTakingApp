@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="card m-5">
+    <div class="card-body">
+      <h1 class="display-3 text-center">Register</h1>
+      <form action="/register" method="POST">
+        <div class="mb-3">
+          <label for="registerUsername" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="registerUsername"
+            name="username"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="registerPassword"
+            name="password"
+          />
+        </div>
+        {{#if message}}
+          {{#each message}}
+            <div class="alert alert-danger">
+              {{this}}
+            </div>
+          {{/each}}
+        {{/if}}
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
