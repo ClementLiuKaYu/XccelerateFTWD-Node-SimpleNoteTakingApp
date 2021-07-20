@@ -43,8 +43,7 @@ const noteRouter = new NoteRouter(noteService).router();
 
 // Index page
 app.get("/", async (req, res) => {
-  const notes = await noteService.list(req.auth.user);
-  res.render("index", { notes });
+  res.render("index");
 });
 
 // Note routes

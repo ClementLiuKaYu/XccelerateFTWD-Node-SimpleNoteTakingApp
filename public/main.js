@@ -22,16 +22,17 @@ var notesTemplate = Handlebars.compile(
     `
 );
 
+axios.get("/api/notes/").then((res) => {
+  $("#notes").html(notesTemplate({ notes: res.data }));
+  bindListener();
+});
+
+const reloadNotes = (notes) => {
+  $("#notes").html(notesTemplate({ notes: notes }));
+  bindListener();
+};
+
 const bindListener = () => {
-  const reloadNotes = (notes) => {
-    $("#notes").html(notesTemplate({ notes: notes }));
-    bindListener();
-  };
-
-  axios.get("/api/notes/").then((res) => {
-    reloadNotes(res.data);
-  });
-
   $("#add").submit((e) => {
     e.preventDefault();
 
@@ -69,10 +70,9 @@ const bindListener = () => {
 
   $(".btn-close").on("click", (e) => {
     const noteId = e.target.nextElementSibling[0].id;
-    $.ajax(`/api/notes/${noteId}`, { method: "DELETE" }).then((res) => {
-      reloadNotes(res);
+    axios.delete(`/api/notes/${noteId}`).then((res) => {
+      console.log(res);
+      reloadNotes(res.data);
     });
   });
 };
-
-bindListener();
